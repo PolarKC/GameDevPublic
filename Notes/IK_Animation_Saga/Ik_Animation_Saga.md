@@ -15,14 +15,14 @@ https://github.com/PolarKC/GameDevPublic/compare/f92010a..f7b1ddb?diff=split
 You have to set all of the colliders to isTrigger -AND- set all rigidbodies to isKinematic. Forgetting one or the other could lead to a ton of headache and wasted time.
 
 ## Unity Execution Order O_o
-In this screenshot there is a single player who is the Host of the game.
+In this screenshot there is one player who is the Host of the game.
 
 ![pic](Images/Host_With_IK.png)
 
 The raytraces seen were executed in:
 - Update = Green
 - FixedUpdate = Cyan
-- Command = Red
+- Command = Red (Executed on Mirror Server)
 - LateUpdate = Yellow
 
 You'll notice LateUpdate is NOT in the direction that the gun is pointing visually.
