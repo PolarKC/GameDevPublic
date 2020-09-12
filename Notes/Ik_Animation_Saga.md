@@ -31,7 +31,7 @@ Let's take a look at the client's raytraces
 
 ![pic](Images/Client_View_____Connected_To_Separate_Server.png)
 
-Similar to the original screenshot (Single player as a Host screenshot), we see that the Yellow raytrace from LateUpdate does not match the Green (Update) and Cyan (FixedUpdate) traces. The yellow traces is pointing in the direction that the gun would face if inverse kinematics was turned off.
+Similar to the original screenshot (Single player as a Host), we see that the Yellow raytrace from LateUpdate does not match the Green (Update) and Cyan (FixedUpdate) traces. The yellow trace is pointing in the direction that the gun would face if inverse kinematics was turned off.
 
 ---
 So what does all of this mean? I don't know yet. But I hope this helps if you're like me and running into problems getting your animated character to shoot at a target w/ IK locally & over the network.
