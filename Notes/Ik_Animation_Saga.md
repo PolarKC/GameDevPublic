@@ -1,5 +1,7 @@
 # Animation + IK + Mirror = Learning Opportunity
 
+UPDATE: I found a solution, [see here](#Solution-Found)
+
 In this screenshot there is a single player who is the Host of the game.
 
 ![pic](Images/Host_With_IK.png)
@@ -36,7 +38,21 @@ Similar to the original screenshot (Single player as a Host), we see that the Ye
 ---
 So what does all of this mean? I don't know yet. But I hope this helps if you're like me and running into problems getting your animated character to shoot at a target w/ IK locally & over the network.
 
-
 ## Useful Links
 - https://docs.unity3d.com/Manual/ExecutionOrder.html
 - https://mirror-networking.com/docs/Guides/Communications/RemoteActions.html
+
+---
+
+## SOLUTION FOUND
+If you're using Final IK Aim IK like me, you can manually call for the IK solvers to update in LateUpdate to guarantee that everything matches up:
+```csharp
+private void LateUpdate()
+{
+    aimIK.solver.Update();
+}
+```
+
+This seemingly simple line of code took an incredible amount of time to find. I've watched a dozen videos and read through I'd estimate 100 articles and forum posts to find the solution.
+
+https://forum.unity.com/threads/final-ik-full-body-ik-aim-look-at-fabrik-ccd-ik-1-0-released.222685/page-20#post-1976210
