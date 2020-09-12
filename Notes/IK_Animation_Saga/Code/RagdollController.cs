@@ -1,4 +1,4 @@
-// BROKEN RagdollController - Needs to set rigidbodies to isKinematic
+// Working RagdollController
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +36,9 @@ public class RagdollController : NetworkBehaviour
             if (c.gameObject != this.gameObject)
             {
                 c.isTrigger = true;
+                if (c.attachedRigidbody)
+                    c.attachedRigidbody.isKinematic = true;
+
                 RagdollColliders.Add(c);
             }
         }
@@ -54,7 +57,10 @@ public class RagdollController : NetworkBehaviour
         {
             c.isTrigger = false;
             if (c.attachedRigidbody)
+            {
+                c.attachedRigidbody.isKinematic = false;
                 c.attachedRigidbody.velocity = Vector3.zero;
+            }
         }
     }
 
@@ -70,6 +76,10 @@ public class RagdollController : NetworkBehaviour
         foreach (Collider c in RagdollColliders)
         {
             c.isTrigger = true;
+            if (c.attachedRigidbody)
+            {
+                c.attachedRigidbody.isKinematic = true;
+            }
         }
     }
 }
