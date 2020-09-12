@@ -3,15 +3,13 @@
 UPDATE: I found a solution to the IK timing problem, [see here](#Solution-Found)
 
 ## Ragdolls
-This all started when I couldn't figure out why my character seemed to shoot in a direction that it wasn't facing visually. Imagine pointing your gun at a tree in front of you, pulling the trigger, and seeing the bullet impact into the ground 10 feet to the left.... oh and the muzzle flash seemed to appear from thin air to your left instead of from your weapon.
+This all started when I couldn't figure out why my character seemed to shoot in a direction that it wasn't facing visually. Imagine pointing your gun at a tree in front of you, pulling the trigger, and seeing the bullet impact the ground 10 feet to the left of the tree.... oh and the muzzle flash appears from thin air to your left instead of from your weapon.
 
-I slowly teased out every script and component until my player character was just the absolute bare minumum and it STILL shot in the wrong direction.
+I slowly teased out every script and component until my player character was just the absolute bare minumum. I had an Animator, Aim IK, and a FireScript.cs that shot automatically on an interval. The character STILL shot in the wrong direction.
 
-So, I pulled in a fresh player model and slowly added scripts and components making sure to test each time. It worked just fine... this was maddening. The difference? All of the rigidbodies, colliders, and joints on the original character from running the Unity Ragdoll Wizard.
+So, I pulled in a fresh player model and slowly added scripts and components, making sure to test each time. It shot exactly where it should every time... this was maddening. The difference? All of the rigidbodies, colliders, and joints on the original character's body parts from running the Unity Ragdoll Wizard. I wrote a ragdoll controller to enable and disable these elements but I missed one critical step :)
 
-I wrote a ragdoll controller to enable and disable these elements but I missed one critical step :)
-Take a look at the diff here between the working RagdollerController and the broken one.
-
+Take a look at the diff here between the working RagdollerController and the broken one:
 https://github.com/PolarKC/GameDevPublic/compare/f92010a..f7b1ddb?diff=split
 
 You have to set all of the colliders to isTrigger -AND- set all rigidbodies to isKinematic. Forgetting one or the other could lead to a ton of headache and wasted time.
