@@ -12,6 +12,7 @@ So, I pulled in a fresh player model and slowly added scripts and components mak
 I wrote a ragdoll controller to enable and disable these elements but I missed one critical step :)
 Take a look at the diff here between the working RagdollerController and the broken one.
 
+https://github.com/PolarKC/GameDevPublic/compare/f92010a..f7b1ddb?diff=split
 
 You have to set all of the colliders to isTrigger -AND- set all rigidbodies to isKinematic. Forgetting one or the other could lead to a ton of headache and wasted time.
 
